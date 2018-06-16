@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Підрахунок середнього балу</title>
+	<script language="javascript">
+		function valuate(){
+			var ball=[4];
+			var kof=[4];
+			for(var i=0; i<4; i++){
+				var add=(i==3)?'a':'p'+(i+1);
+				ball[i]=document.getElementById(add+'ball').value;
+				kof[i]=document.getElementById(add+'kof').value;
+				if(i==3){
+					if(ball[i]>12 || ball[i]<1){
+						document.getElementById('result').innerHTML="Середній бал атестату повинен бути від 1 до 12!";
+						return;
+					}
+				}else{
+					if(ball[i]>200 || ball[i]<100){
+						document.getElementById('result').innerHTML="Бал ЗНО повинен бути від 100 до 200!";
+						return;
+					}
+				}
+				if(kof[i]>1.0 || kof[i]<0.01){
+					document.getElementById('result').innerHTML="Коефіцієнт повинен бути від 0 до 1!";
+					return;
+				}
+			}
+			var result=ball[0]*kof[0]+ball[1]*kof[1]+ball[2]*kof[2]+(ball[3]/12.0)*200*kof[3];
+			document.getElementById('result').innerHTML="Ваш середній бал ЗНО="+result;
+		}
+	</script>
+	<style type="text/css">
+		html, body{
+			margin: 0px;
+			padding: 0px;
+			background-color: black;
+		}
+		#container{
+			background-color: #AFF;
+			border-width: 3px;
+			border-color: #0F0;
+			border-style: solid;
+			border-radius: 10px;
+			margin: 10px;
+		}
+		#pred{
+			float: left;
+			background-color: #AAF;
+			margin: 10px;
+			width: 200px;
+			border-style: solid;
+			border-width: 2px;
+			border-color: #F00;
+			padding: 5px;
+			border-radius: 5px;
+		}
+		#btn{
+			background-color: #FFF;
+			margin: 10px;
+			border-style: solid;
+			border-width: 2px;
+			border-color: #AAA;
+			padding: 5px;
+			border-radius: 5px;
+		}
+		#result{
+			height: 140px;
+		}
+		footer{
+			background-color: #444;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div id="container">
+			<h1>Підрахунок середнього балу ЗНО, автор Тарасов Ігор</h1>
+			<div id="pred">
+				<h2>Предмет 1</h2>
+				<div id="pole">
+					<p>Бал ЗНО (від 100 до 200)</p>
+					<input id="p1ball" type="number">
+				</div>
+				<div id="pole">
+					<p>Коефіцієнт (від 0 до 1, наприклад 0.4)</p>
+					<input id="p1kof" type="number">
+				</div>
+			</div>
+			<div id="pred">
+				<h2>Предмет 2</h2>
+				<div id="pole">
+					<p>Бал ЗНО (від 100 до 200)</p>
+					<input id="p2ball" type="number">
+				</div>
+				<div id="pole">
+					<p>Коефіцієнт (від 0 до 1, наприклад 0.4)</p>
+					<input id="p2kof" type="number">
+				</div>
+			</div>
+			<div id="pred">
+				<h2>Предмет 3</h2>
+				<div id="pole">
+					<p>Бал ЗНО (від 100 до 200)</p>
+					<input id="p3ball" type="number">
+				</div>
+				<div id="pole">
+					<p>Коефіцієнт (від 0 до 1, наприклад 0.4)</p>
+					<input id="p3kof" type="number">
+				</div>
+			</div>
+			<div id="pred">
+				<h2>Атестат</h2>
+				<div id="pole">
+					<p>Середній бал атестату (від 1 до 12)</p>
+					<input id="aball" type="number">
+				</div>
+				<div id="pole">
+					<p>Коефіцієнт (від 0 до 1, наприклад 0.4)</p>
+					<input id="akof" type="number">
+				</div>
+			</div>
+			<div id=pred>
+				<button id="btn" onclick="valuate()">Підрахувати</button>
+				<div id="result"></div>
+			</div>
+		</div>
+	</center>
+</body>
+</html>
